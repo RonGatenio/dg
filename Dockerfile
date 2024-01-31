@@ -7,9 +7,8 @@ RUN set -e
 
 # Install packages
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get install -yq --no-install-recommends clang llvm
-RUN apt install -yq pstack
+RUN apt update
+RUN apt install -y clang llvm
 
 # --------------------------------------------------
 # Build container
@@ -17,7 +16,7 @@ RUN apt install -yq pstack
 FROM base as build
 
 # Install build dependencies
-RUN apt-get install -yq --no-install-recommends cmake ninja-build llvm-dev python3
+RUN apt install -y cmake ninja-build llvm-dev python3
 
 WORKDIR /dg
 COPY . /dg
